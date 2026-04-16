@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>NPTEL Progress</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f5;
+    color: #333;
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ── LOGO BAR ── */
+.logo-bar {
+    background: #fff;
+    padding: 8px 0 6px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-swayam {
+    height: 36px;
+}
+
+.logo-iit {
+    height: 40px;
+}
+/* ── EMAIL BAR ── */
+.email-bar {
+    background: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding: 4px 0 8px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* ── RED COURSE BAR ── */
+.coursebar {
+    background: #8b2525;
+    color: #fff;
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+/* ── HAMBURGER ── */
+.menu-bar {
+    background: #f5f5f5;
+    padding: 10px 14px;
+    border-bottom: 1px solid #ddd;
+}
+.menu-icon span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #333;
+    margin: 5px 0;
+}
+
+/* ── MAIN CONTAINER ── */
+.container { background: #fff; padding: 0 16px 20px; }
+
+/* ── INFO ROWS ── */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+.info-row .label { color: #555; }
+.info-row .value { color: #333; font-weight: 400; text-align: right; }
+
+/* ── PROGRESS SECTION ── */
+.progress-section {
+    text-align: center;
+    padding: 28px 0 22px;
+}
+/* The tiny solid dark-blue vertical bar seen in Image 1 above the % number */
+.progress-tick {
+    width: 4px;
+    height: 18px;
+    background: #1c3a6e;
+    border-radius: 2px;
+    margin: 0 auto 6px;
+}
+.progress-num {
+    font-size: 26px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.progress-label {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+}
+
+/* ── SECTION HEADERS ── */
+.section-title {
+    background: #b8bec4;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+    margin: 0 -16px;
+}
+.note {
+    font-size: 11.5px;
+    color: #777;
+    font-style: italic;
+    padding: 8px 0 4px;
+}
+
+/* ── SCORE ROWS ── */
+.scores-wrap { padding-bottom: 4px; }
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+.score-row:last-child { border-bottom: none; }
+.score-label { color: #333; }
+.score-val { font-weight: 700; color: #333; min-width: 48px; text-align: right; }
+.score-val.dash { font-weight: 400; }
+
+/* ── UNIT TABLE ── */
+.unit-wrap { overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
+.unit-table { min-width: 420px; width: 100%; }
+.unit-header {
+    display: flex;
+    padding: 10px 0 8px;
+    border-bottom: 1px solid #ccc;
+    font-weight: 500;
+    font-size: 13px;
+}
+.unit-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+.unit-col-name { flex: 0 0 90px; color: #333; padding-top: 2px; }
+.unit-col { flex: 1; }
+.bar-bg { width: 110px; height: 6px; background: #ddd; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: #1976d2; border-radius: 10px; }
+.bar-pct { font-size: 11px; color: #666; margin-top: 2px; }
+
+/* ── POLICY TEXT ── */
+.policy-text { font-size: 13px; line-height: 1.65; color: #333; padding-top: 12px; }
+.policy-text p { margin-bottom: 10px; }
+.link { color: #1976d2; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- LOGO BAR: real image URLs with SVG fallbacks -->
+<div class="logo-bar">
+  <div class="logo-wrapper">
+    <img src="swayam.png" class="logo-swayam">
+    <img src="iit.png" class="logo-iit">
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div class="email-bar"><span id="topEmail"></span> ▾</div>
+
+<div class="coursebar" id="coursebar">NPTEL » Control Engineering</div>
+
+<div class="menu-bar">
+  <div class="menu-icon"><span></span><span></span><span></span></div>
+</div>
+
+<div class="container">
+
+  <div class="info-row">
+    <span class="label">Date enrolled</span>
+    <span class="value" id="date"></span>
+  </div>
+  <div class="info-row">
+    <span class="label">Email</span>
+    <span class="value" id="email"></span>
+  </div>
+  <div class="info-row">
+    <span class="label">Name</span>
+    <span class="value" id="name"></span>
+  </div>
+
+  <div class="progress-section">
+    <!-- Exact match to Image 1: small solid dark-blue vertical rectangle above the % -->
+    <div class="progress-tick"></div>
+    <div class="progress-num" id="progress"></div>
+    <div class="progress-label">Course Progress</div>
+  </div>
+
+  <div class="section-title">Assessment scores</div>
+  <p class="note">NOTE: Please scroll down to see all assignment scores</p>
+  <div class="scores-wrap" id="scores"></div>
+
+  <div class="section-title" style="margin-top:20px;">Unit wise Progress</div>
+  <p class="note">NOTE: The latest Course and Unit progress will be reflected within 24 hours.</p>
+  <div class="unit-wrap">
+    <div class="unit-table">
+      <div class="unit-header">
+        <div class="unit-col-name">Unit</div>
+        <div class="unit-col">Lesson Progress</div>
+        <div class="unit-col">Assignments Progress</div>
+      </div>
+      <div id="unitProgress"></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px;">Grading and Certification Policy</div>
+  <div class="policy-text">
+    <p>The course is free to enroll and learn from. But if you want a certificate, you have to register and write the proctored exam conducted by us in person at any of the designated exam centres.</p>
+    <p>The exam is optional for a fee of Rs 1000/- (Rupees one thousand only).</p>
+    <p>Date and Time of Exams: April 25, 2026 Morning session 9am to 12 noon; Afternoon Session 2pm to 5pm.</p>
+    <p>Registration url: Announcements will be made when the registration form is open for registrations.</p>
+    <p>The online registration form has to be filled and the certification exam fee needs to be paid. More details will be made available when the exam registration form is published. If there are any changes, it will be mentioned then.</p>
+    <p>Please check the form for more details on the cities where the exams will be held, the conditions you agree to when you fill the form etc.</p><br>
+    <p><strong>CRITERIA TO GET A CERTIFICATE</strong></p>
+    <p>Average assignment score = 25% of average of best 8 assignments out of the total 12 assignments given in the course.</p>
+    <p>Exam score = 75% of the proctored certification exam score out of 100</p>
+    <p><strong>Final score = Average assignment score + Exam score</strong></p><br>
+    <p>Please note that assignments encompass all types (including quizzes, programming tasks, and essay submissions) available in the specific week.</p><br>
+    <p><strong>YOU WILL BE ELIGIBLE FOR A CERTIFICATE ONLY IF AVERAGE ASSIGNMENT SCORE &gt;=10/25 AND EXAM SCORE &gt;= 30/75.</strong> If one of the 2 criteria is not met, you will not get the certificate even if the Final score &gt;= 40/100.</p><br>
+    <p>Certificate will have your name, photograph and the score in the final exam with the breakup. It will have the logos of NPTEL and IIT Kharagpur. It will be e-verifiable at <span class="link">nptel.ac.in/noc</span>.</p>
+    <p>Only the e-certificate will be made available. Hard copies will not be dispatched.</p>
+    <p>Once again, thanks for your interest in our online courses and certification. Happy learning.</p>
+    <p>- NPTEL team</p>
+    <hr style="margin:14px 0; border-color:#eee;">
+    <p><strong>Announcement:</strong><br>You are currently receiving course related emails. <span class="link">Click here to unsubscribe.</span></p>
+    <p><strong>Discussion forum:</strong><br>If you want to unsubscribe from forum <span class="link">Click here</span></p>
+  </div>
+
+</div>
+
+<script>
+let userIndex = 0;
+const users = [
+  {
+    name: "MILIND SUDHEER",
+    email: "ms7125@srmist.edu.in",
+    date: "2026-01-19",
+    progress: "1.96%",
+    course: "Control Engineering",
+    scores: ["78.0","67.0","69.0","53.0","-","-","72.0","-","89.0","-","75.0","78.0"]
+  },
+  {
+    name: "KUMKUM",
+    email: "ks5682@srmist.edu.in",
+    date: "2026-01-19",
+    progress: "2.83%",
+    course: "Control Engineering",
+    scores: ["100.0","100.0","85.0","83.0","-","-","93.0","-","100.0","-","75.0","100.0"]
+  }
+];
+
+function loadUser() {
+  const u = users[userIndex];
+  document.getElementById("name").textContent      = u.name;
+  document.getElementById("email").textContent     = u.email;
+  document.getElementById("date").textContent      = u.date;
+  document.getElementById("progress").textContent  = u.progress;
+  document.getElementById("topEmail").textContent  = u.email;
+  document.getElementById("coursebar").textContent = "NPTEL \u00bb " + u.course;
+
+  let html = "";
+  for (let i = 0; i < 12; i++) {
+    const s = u.scores[i], isDash = s === "-";
+    html += `<div class="score-row">
+      <span class="score-label">Week ${String(i+1).padStart(2,'0')}: Assignment ${String(i+1).padStart(2,'0')}:</span>
+      <span class="score-val${isDash?' dash':''}">${s}</span>
+    </div>`;
+  }
+  document.getElementById("scores").innerHTML = html;
+
+  let unitHTML = `<div class="unit-row">
+    <div class="unit-col-name">About NPTEL</div>
+    <div class="unit-col"><div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div><div class="bar-pct">100.0%</div></div>
+    <div class="unit-col"><span style="color:#999">-</span></div>
+  </div>`;
+  for (let i = 0; i < 12; i++) {
+    const p = u.scores[i] !== "-" ? 100 : 0;
+    unitHTML += `<div class="unit-row">
+      <div class="unit-col-name">Week ${i+1}</div>
+      <div class="unit-col"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div><div class="bar-pct" style="color:#999">0.0%</div></div>
+      <div class="unit-col"><div class="bar-bg"><div class="bar-fill" style="width:${p}%"></div></div><div class="bar-pct">${p}.0%</div></div>
+    </div>`;
+  }
+  document.getElementById("unitProgress").innerHTML = unitHTML;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadUser();
+  document.getElementById("progress").addEventListener("click", () => {
+    userIndex = (userIndex + 1) % users.length;
+    loadUser();
+  });
+});
+</script>
+</body>
+</html>
