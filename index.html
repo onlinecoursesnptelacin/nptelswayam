@@ -141,12 +141,12 @@ body {
 }
 
 .score-label {
-    flex: 0 0 70%;   /* 🔥 FIXED WIDTH LEFT */
+    flex: 0 0 68%;   /* 🔥 FIXED WIDTH LEFT */
     color: #333;
 }
 
 .score-val {
-    flex: 0 0 25%;   /* 🔥 CENTER COLUMN */
+    flex: 0 0 3%;   /* 🔥 CENTER COLUMN */
     text-align: center;
     font-weight: 700;
     color: #333;
@@ -190,6 +190,23 @@ body {
 .scores-wrap::-webkit-scrollbar-thumb {
     background: #bbb;
     border-radius: 10px;
+}
+.collapsible {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.collapsible.closed {
+    max-height: 0;
+}
+
+.section-title {
+    background: #b0b7bd;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer; /* 🔥 clickable */
 }
 </style>
 </head>
@@ -240,21 +257,37 @@ body {
   <p class="note">NOTE: Please scroll down to see all assignment scores</p>
   <div class="scores-wrap" id="scores"></div>
 
-  <div class="section-title" style="margin-top:20px;">Unit wise Progress</div>
-  <p class="note">NOTE: The latest Course and Unit progress will be reflected within 24 hours.</p>
-  <div class="unit-wrap">
-    <div class="unit-table">
-      <div class="unit-header">
-        <div class="unit-col-name">Unit</div>
-        <div class="unit-col">Lesson Progress</div>
-        <div class="unit-col">Assignments Progress</div>
-      </div>
-      <div id="unitProgress"></div>
-    </div>
-  </div>
+ <div class="section-title" onclick="toggleSection('unitSection')">
+    Unit wise Progress
+</div>
 
-  <div class="section-title" style="margin-top:20px;">Grading and Certification Policy</div>
-  <div class="policy-text">
+
+<div id="unitSection" class="collapsible">
+
+    <p class="note">
+        NOTE: The latest Course and Unit progress will be reflected within 24 hours.
+    </p>
+
+    <div class="unit-wrap">
+        <div class="unit-table">
+            <div class="unit-header">
+                <div class="unit-col-name">Unit</div>
+                <div class="unit-col">Lesson Progress</div>
+                <div class="unit-col">Assignments Progress</div>
+            </div>
+            <div id="unitProgress"></div>
+        </div>
+    </div>
+
+</div>
+
+  <div class="section-title" onclick="toggleSection('policySection')">
+    Grading and Certification Policy
+</div>
+
+<div id="policySection" class="collapsible">
+
+    <div class="policy-text">
     <p>The course is free to enroll and learn from. But if you want a certificate, you have to register and write the proctored exam conducted by us in person at any of the designated exam centres.</p>
     <p>The exam is optional for a fee of Rs 1000/- (Rupees one thousand only).</p>
     <p>Date and Time of Exams: April 25, 2026 Morning session 9am to 12 noon; Afternoon Session 2pm to 5pm.</p>
@@ -341,6 +374,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadUser();
   });
 });
+function toggleSection(id) {
+    const section = document.getElementById(id);
+
+    if (section.classList.contains("closed")) {
+        section.classList.remove("closed");
+    } else {
+        section.classList.add("closed");
+    }
+}
 </script>
 </body>
 </html>
