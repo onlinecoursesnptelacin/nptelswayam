@@ -312,7 +312,9 @@ body {
 </div>
 
 <script>
-let userIndex = 0;
+let userIndex = localStorage.getItem("userIndex") 
+    ? parseInt(localStorage.getItem("userIndex")) 
+    : 0;
 const users = [
   {
     name: "MILIND SUDHEER",
@@ -371,7 +373,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadUser();
   document.getElementById("progress").addEventListener("click", () => {
     userIndex = (userIndex + 1) % users.length;
-    loadUser();
+localStorage.setItem("userIndex", userIndex);  // 🔥 SAVE
+loadUser();
   });
 });
 function toggleSection(id) {
