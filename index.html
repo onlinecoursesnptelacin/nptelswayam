@@ -127,19 +127,34 @@ body {
 }
 
 /* ── SCORE ROWS ── */
-.scores-wrap { padding-bottom: 4px; }
+.scores-wrap {
+    max-height: 260px;   /* adjust if needed */
+    overflow-y: auto;
+    padding-right: 6px;
+}
 .score-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
     font-size: 14px;
 }
-.score-row:last-child { border-bottom: none; }
-.score-label { color: #333; }
-.score-val { font-weight: 700; color: #333; min-width: 48px; text-align: right; }
-.score-val.dash { font-weight: 400; }
+
+.score-label {
+    flex: 1;
+    color: #333;
+}
+
+.score-val {
+    width: 70px;              /* fixed width */
+    text-align: center;       /* 🔥 CENTER */
+    font-weight: 700;
+    color: #333;
+}
+
+.score-val.dash {
+    font-weight: 400;
+}
 
 /* ── UNIT TABLE ── */
 .unit-wrap { overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
@@ -168,6 +183,14 @@ body {
 .policy-text { font-size: 13px; line-height: 1.65; color: #333; padding-top: 12px; }
 .policy-text p { margin-bottom: 10px; }
 .link { color: #1976d2; text-decoration: none; }
+.scores-wrap::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scores-wrap::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
 </style>
 </head>
 <body>
